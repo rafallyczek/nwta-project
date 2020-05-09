@@ -18,10 +18,26 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
+    //Pobierz wszystkie książki
     public List<Book> getAllBooks(){
         List<Book> books = new ArrayList<>();
         bookRepository.findAll().forEach(books::add);
         return books;
+    }
+
+    //Pobierz książkę po id
+    public Book getBookById(Long id){
+        return bookRepository.findById(id).orElse(null);
+    }
+
+    //Dodaj książkę
+    public void addBook(Book book){
+        bookRepository.save(book);
+    }
+
+    //Usuń książkę
+    public void deleteBook(Long id){
+        bookRepository.deleteById(id);
     }
 
 }
