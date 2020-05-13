@@ -1,0 +1,65 @@
+.container{
+  width: 100%;
+  height: 300vh;
+}
+.banner {
+  height: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  position: relative;
+  text-align: center;
+  background-color:sienna;
+}
+
+.navbar {
+  background-color: sienna;
+  text-align: center;
+  border-top: 1px solid #262626;
+}
+
+.navbar > button:hover{
+  background-color: #262626;
+}
+
+.mat-button{
+  border-radius: 0;
+}
+::ng-deep .panel{
+  border-radius: 0 !important;
+}
+
+.footer {
+  background-color: sienna;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "montserrat", sans-serif;
+  background: #000 !important;
+}
+
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text {
+  text-transform: uppercase;
+  font-size: 40px;
+  text-align: center;
+  letter-spacing: 10px;
+}
+
+
