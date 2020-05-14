@@ -1,0 +1,17 @@
+<div class="container">
+    <h1 class="info">Książki</h1>
+    <div class="bookHeader">
+        <div class="bookInfoBox">TYTUŁ</div>
+        <div class="bookInfoBox">AUTOR</div>
+        <div class="bookInfoBox">ROK WYDANIA</div>
+        <div class="bookInfoBox">GATUNEK</div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="book" *ngFor="let book of books">
+        <div class="bookInfoBox">{{book.title}}</div>
+        <div class="bookInfoBox">{{book.author}}</div>
+        <div class="bookInfoBox">{{book.year}}</div>
+        <div class="bookInfoBox">{{book.genre}}</div>
+        <div style="clear: both;"></div>
+    </div>
+</div>
