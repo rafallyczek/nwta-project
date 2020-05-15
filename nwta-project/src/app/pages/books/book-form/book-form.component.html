@@ -1,0 +1,28 @@
+<div class="container">
+    <h1 class="info">Dodaj książkę</h1>
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="inputs">
+            <label for="title">Tytuł</label>
+            <input type="text" name="title" [(ngModel)]="book.title"> 
+        </div>
+    
+        <div class="inputs">
+            <label for="author">Autor</label>
+            <input type="text" name="author" [(ngModel)]="book.author">
+        </div>
+
+        <div class="inputs">
+            <label for="year">Rok wydania</label>
+            <input type="text" name="year" [(ngModel)]="book.year">
+        </div>
+
+        <div class="inputs">
+            <label for="genre">Gatunek</label>
+            <input type="text" name="genre" [(ngModel)]="book.genre">
+        </div>
+
+        <button type="submit" mat-raised-button color="warn">Zapisz</button>
+
+    </form>
+</div>

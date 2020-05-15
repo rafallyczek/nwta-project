@@ -23,6 +23,7 @@ export class BooksComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAllBooks();
   }
 
   //Pobierz książki

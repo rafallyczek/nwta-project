@@ -15,4 +15,8 @@ export class BooksService {
     return this.http.get(`${this.url}/books`);
   }
 
+  saveBook(book: any) : Observable<any> {
+    return this.http.post(`${this.url}/addBook`, book)
+  }
+
 }

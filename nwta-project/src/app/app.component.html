@@ -8,10 +8,10 @@
   <div class="navbar">
     <button mat-button routerLink="/home">Home</button>
 
-    <button mat-button [matMenuTriggerFor]="menu1">Menu 1</button>
+    <button mat-button [matMenuTriggerFor]="menu1">Książki</button>
     <mat-menu #menu1="matMenu" class="panel">
-      <button mat-menu-item routerLink="/books">Książki</button>
-      <button mat-menu-item>Opcja 2</button>
+      <button mat-menu-item routerLink="/books">Lista</button>
+      <button mat-menu-item routerLink="/addBook">Dodaj książkę</button>
     </mat-menu>
 
     <button mat-button [matMenuTriggerFor]="menu2">Menu 2</button>
