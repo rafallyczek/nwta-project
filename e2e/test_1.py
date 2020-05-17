@@ -2,11 +2,9 @@ import unittest
 from selenium import webdriver
 class TitleTests(unittest.TestCase):
     def setUp(self):
-        # print('Rozpoczynam test.')
         pass
     @classmethod
     def setUpClass(self):
-        # self.driver = webdriver.Chrome(executable_path='C:\TestFiles\chromedriver.exe')
         self.driver = webdriver.Chrome(executable_path='chromedriver.exe')
     def test_home_page_title(self):
         driver = self.driver
@@ -27,7 +25,6 @@ class TitleTests(unittest.TestCase):
         print(title)
         assert title == 'NwtaProject'
     def tearDown(self):
-        # print('Test zakończony.')
         pass
     @classmethod
     def tearDownClass(self):
@@ -35,11 +32,9 @@ class TitleTests(unittest.TestCase):
 
 class FooterTextTests(unittest.TestCase):
     def setUp(self):
-        # print('Rozpoczynam test.')
         pass
     @classmethod
     def setUpClass(self):
-        # self.driver = webdriver.Chrome(executable_path='C:\TestFiles\chromedriver.exe')
         self.driver = webdriver.Chrome(executable_path='chromedriver.exe')
     def test_home_page_footerText(self):
         driver = self.driver
@@ -60,7 +55,6 @@ class FooterTextTests(unittest.TestCase):
         print(element.text)
         self.assertIn("Paweł Piotrowski, Rafał Łyczek", element.text)
     def tearDown(self):
-        # print('Test zakończony.')
         pass
     @classmethod
     def tearDownClass(self):
@@ -68,11 +62,9 @@ class FooterTextTests(unittest.TestCase):
 
 class FormTests(unittest.TestCase):
     def setUp(self):
-        # print('Rozpoczynam test.')
         pass
     @classmethod
     def setUpClass(self):
-        # self.driver = webdriver.Chrome(executable_path='C:\TestFiles\chromedriver.exe')
         self.driver = webdriver.Chrome(executable_path='chromedriver.exe')
     def test_addBook_page_form(self):
         driver = self.driver
@@ -100,7 +92,6 @@ class FormTests(unittest.TestCase):
                 print(element.text)
                 self.assertIn("IT", element.text)
     def tearDown(self):
-        # print('Test zakończony.')
         pass
     @classmethod
     def tearDownClass(self):
