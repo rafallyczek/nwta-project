@@ -19,7 +19,7 @@ export class BooksComponent implements OnInit {
           this.getAllBooks();
         }
       }
-    )
+    );
   }
 
   ngOnInit() {
