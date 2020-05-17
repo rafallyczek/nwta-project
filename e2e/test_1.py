@@ -6,7 +6,8 @@ class TitleTests(unittest.TestCase):
         pass
     @classmethod
     def setUpClass(self):
-        self.driver = webdriver.Chrome(executable_path='C:\TestFiles\chromedriver.exe')
+        # self.driver = webdriver.Chrome(executable_path='C:\TestFiles\chromedriver.exe')
+        self.driver = webdriver.Chrome(executable_path='chromedriver.exe')
     def test_home_page_title(self):
         driver = self.driver
         driver.get('http://localhost:4200/home')
@@ -38,7 +39,8 @@ class FooterTextTests(unittest.TestCase):
         pass
     @classmethod
     def setUpClass(self):
-        self.driver = webdriver.Chrome(executable_path='C:\TestFiles\chromedriver.exe')
+        # self.driver = webdriver.Chrome(executable_path='C:\TestFiles\chromedriver.exe')
+        self.driver = webdriver.Chrome(executable_path='chromedriver.exe')
     def test_home_page_footerText(self):
         driver = self.driver
         driver.get('http://localhost:4200/home')
@@ -70,7 +72,8 @@ class FormTests(unittest.TestCase):
         pass
     @classmethod
     def setUpClass(self):
-        self.driver = webdriver.Chrome(executable_path='C:\TestFiles\chromedriver.exe')
+        # self.driver = webdriver.Chrome(executable_path='C:\TestFiles\chromedriver.exe')
+        self.driver = webdriver.Chrome(executable_path='chromedriver.exe')
     def test_addBook_page_form(self):
         driver = self.driver
         driver.get('http://localhost:4200/addBook')
