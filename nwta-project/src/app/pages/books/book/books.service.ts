@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -16,7 +16,8 @@ export class BooksService {
   }
 
   saveBook(book: any) : Observable<any> {
-    return this.http.post(`${this.url}/addBook`, book)
+    const headers = new HttpHeaders().set('Authorization','Basic '+sessionStorage.getItem('token'));
+    return this.http.post(`${this.url}/addBook`, book, {headers});
   }
 
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginForm } from './loginform/loginform';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -11,7 +10,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   private baseUrl = "http://localhost:8080";
-  loginForm: LoginForm = new LoginForm();
+  private username;
+  private password;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -19,13 +19,13 @@ export class LoginComponent implements OnInit {
     sessionStorage.setItem('token',null);
   }
 
-  login() {
-    this.http.post(`${this.baseUrl}/login`, this.loginForm)
+  login() { 
+    const headers = new HttpHeaders().set('Authorization','Basic '+btoa(this.username+':'+this.password));
+    this.http.get(`${this.baseUrl}/login`, {headers})
     .subscribe(data => {
       console.log(data);
       if(data){
-        sessionStorage.setItem('token',btoa(this.loginForm.username+':'+this.loginForm.password))
-        console.log(sessionStorage.getItem('token'));
+        sessionStorage.setItem('token',btoa(this.username+':'+this.password))
         this.router.navigate(['home']);
       }else{
         alert("Błąd autentykacji.");

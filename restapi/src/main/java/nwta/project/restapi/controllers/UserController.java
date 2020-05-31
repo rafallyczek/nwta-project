@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Base64;
+
 @RestController
 public class UserController {
 
@@ -22,10 +25,13 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-    @PostMapping("/login")
-    public boolean login(@RequestBody User requestUser){
-        UserDetails user = userService.loadUserByUsername(requestUser.getUsername());
-        return requestUser.getUsername().equals(user.getUsername()) && requestUser.getPassword().equals(user.getPassword());
+    @GetMapping("/login")
+    public boolean login(HttpServletRequest request){
+        String authToken = request.getHeader("Authorization").substring(5).trim();
+        String username = new String(Base64.getDecoder().decode(authToken)).split(":")[0];
+        String password = new String(Base64.getDecoder().decode(authToken)).split(":")[1];
+        UserDetails user = userService.loadUserByUsername(username);
+        return username.equals(user.getUsername()) && password.equals(user.getPassword());
     }
 
 }
