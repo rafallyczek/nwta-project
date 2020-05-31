@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'nwta-project';
+
+  constructor(private authService: AuthService) {}
+
+  logout(){
+    sessionStorage.removeItem('token');
+  }
+
+  isLoggedIn(){
+    return this.authService.isLoggedIn();
+  }
+
 }
+

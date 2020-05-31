@@ -14,11 +14,11 @@
       <button mat-menu-item routerLink="/addBook">Dodaj książkę</button>
     </mat-menu>
 
-    <button mat-button [matMenuTriggerFor]="menu2">Menu 2</button>
+    <button mat-button [matMenuTriggerFor]="menu2">Konto</button>
     <mat-menu #menu2="matMenu" class="panel">
-      <button mat-menu-item>Opcja 1</button>
-      <button mat-menu-item>Opcja 2</button>
-      <button mat-menu-item>Opcja 3</button>
+      <button mat-menu-item routerLink="/register">Utwórz konto</button>
+      <button mat-menu-item routerLink="/login" *ngIf="!isLoggedIn()">Zaloguj</button>
+      <button mat-menu-item (click)="logout()" routerLink="/home" *ngIf="isLoggedIn()">Wyloguj</button>
     </mat-menu>
   </div>
 
@@ -26,6 +26,6 @@
 
   <div class="footer">
     Autorzy: Paweł Piotrowski, Rafał Łyczek<br>
-    Ostatnia aktualizacja: 17.05.2020
+    Ostatnia aktualizacja: 31.05.2020
   </div>
 </div>
