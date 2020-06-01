@@ -2,8 +2,8 @@ export class Book {
 
     id: number;
     title: string;
-    pauthor: string;
+    author: string;
     year: string;
-    genre:string;
+    genre: string;
 
 }

@@ -16,8 +16,9 @@ export class BooksService {
   }
 
   saveBook(book: any) : Observable<any> {
-    const headers = new HttpHeaders().set('Authorization','Basic '+sessionStorage.getItem('token'));
-    return this.http.post(`${this.url}/addBook`, book, {headers});
+    const headers = new HttpHeaders().set('Authorization','Basic '+sessionStorage.getItem("token"));
+    console.log(headers);
+    return this.http.post(`${this.url}/addBook`, book, {headers: headers});
   }
 
 }
