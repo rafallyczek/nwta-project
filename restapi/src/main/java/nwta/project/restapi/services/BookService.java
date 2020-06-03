@@ -35,6 +35,16 @@ public class BookService {
         bookRepository.save(book);
     }
 
+    //Aktualizuj książkę
+    public void updateBook(Book book){
+        Book newBook = bookRepository.findById(book.getId()).get();
+        newBook.setTitle(book.getTitle());
+        newBook.setAuthor(book.getAuthor());
+        newBook.setYear(book.getYear());
+        newBook.setGenre(book.getGenre());
+        bookRepository.save(newBook);
+    }
+
     //Usuń książkę
     public void deleteBook(Long id){
         bookRepository.deleteById(id);
