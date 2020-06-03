@@ -38,4 +38,15 @@ export class BooksComponent implements OnInit {
       );
   }
 
+  deleteBook(id: number){
+    this.booksService.deleteBook(id)
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => console.log(error)
+      );
+      window.location.reload();
+  }
+
 }

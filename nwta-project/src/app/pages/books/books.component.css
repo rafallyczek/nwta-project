@@ -9,6 +9,7 @@
 .book{
     margin-left: auto;
     margin-top: auto;
+    position: relative;
 }
 .bookHeader{
     margin-left: auto;
@@ -21,4 +22,25 @@
     width: 286px;
     margin: 2px;
     background-color: #404040;
+}
+.delete{    
+    position: absolute;
+    right: -36px;
+    top: 2px;
+    height: 28px;
+}
+.delete button{
+    position: relative;
+    top: 4px;
+    left: 5px;
+    padding: 3px;
+    background-color: red;
+    border-radius: 5px;
+    display: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.book:hover .delete button{
+    display: block;
 }

@@ -21,4 +21,10 @@ export class BooksService {
     return this.http.post(`${this.url}/addBook`, book, {headers: headers});
   }
 
+  deleteBook(id: number) : Observable<any>{
+    const headers = new HttpHeaders().set('Authorization','Basic '+sessionStorage.getItem("token"));
+    console.log(headers);
+    return this.http.delete(`${this.url}/deleteBook/`+id, {headers: headers});
+  }
+
 }
