@@ -32,7 +32,7 @@ public class BookController {
         bookService.addBook(book);
     }
 
-    @PostMapping("deleteBook/{id}")
+    @DeleteMapping("deleteBook/{id}")
     public void deleteUser(@PathVariable Long id){
         bookService.deleteBook(id);
     }
