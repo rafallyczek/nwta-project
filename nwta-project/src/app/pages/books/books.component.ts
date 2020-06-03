@@ -38,6 +38,7 @@ export class BooksComponent implements OnInit {
       );
   }
 
+  //Usuń książkę
   deleteBook(id: number){
     this.booksService.deleteBook(id)
       .subscribe(
@@ -47,6 +48,12 @@ export class BooksComponent implements OnInit {
         error => console.log(error)
       );
       window.location.reload();
+  }
+
+  //Przejdź do edycji
+  edit(id: number){
+    this.booksService.setEditId(id);
+    this.router.navigate(["/edit"]); 
   }
 
 }

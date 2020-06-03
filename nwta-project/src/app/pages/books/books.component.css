@@ -40,7 +40,31 @@
     border: none;
     color: white;
     cursor: pointer;
+    font-size: 14px;
 }
 .book:hover .delete button{
+    display: block;
+}
+.edit{    
+    position: absolute;
+    right: -84px;
+    top: 2px;
+    height: 28px;
+}
+.edit button{
+    position: relative;
+    top: 4px;
+    left: 5px;
+    padding: 3px;
+    background-color: royalblue;
+    border-radius: 5px;
+    display: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+.book:hover .edit button{
     display: block;
 }
