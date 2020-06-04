@@ -72,5 +72,11 @@ body {
   top: 3px;
   right: 2px;
 }
+.userbar p{
+  margin: 0;
+  position: absolute;
+  top: 6px;
+  right: 80px;
+}
 
 

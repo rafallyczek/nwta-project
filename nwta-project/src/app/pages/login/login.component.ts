@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
       if(data){
-        sessionStorage.setItem('token',btoa(this.username+':'+this.password))
+        sessionStorage.setItem('token',btoa(this.username+':'+this.password));
+        sessionStorage.setItem('username',this.username);
         this.router.navigate(['home']);
       }else{
         alert("Błąd autentykacji.");
