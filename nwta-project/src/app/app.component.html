@@ -1,4 +1,9 @@
 <div class="container">
+
+  <div class="userbar" *ngIf="isLoggedIn()">
+    <button class="mat-raised-button mat-button-base mat-warn" (click)="logout()" routerLink="/home" >Wyloguj</button>
+  </div>
+
   <div class="banner">
     <div class="text middle" data-text="Koło programistów">
       NWTA Project
@@ -17,15 +22,12 @@
     <button mat-button [matMenuTriggerFor]="menu2">Konto</button>
     <mat-menu #menu2="matMenu" class="panel">
       <button mat-menu-item routerLink="/register">Utwórz konto</button>
-      <button mat-menu-item routerLink="/login" *ngIf="!isLoggedIn()">Zaloguj</button>
-      <button mat-menu-item (click)="logout()" routerLink="/home" *ngIf="isLoggedIn()">Wyloguj</button>
     </mat-menu>
   </div>
 
   <router-outlet></router-outlet>
 
   <div class="footer">
-    Autorzy: Paweł Piotrowski, Rafał Łyczek<br>
-    Ostatnia aktualizacja: 31.05.2020
+    <p>Autorzy: Paweł Piotrowski, Rafał Łyczek</p>
   </div>
 </div>

@@ -1,6 +1,5 @@
 .container{
   width: 100%;
-  height: 300vh;
 }
 .banner {
   height: 150px;
@@ -13,24 +12,20 @@
   text-align: center;
   background-color:sienna;
 }
-
 .navbar {
   background-color: sienna;
   text-align: center;
   border-top: 1px solid #262626;
 }
-
 .navbar > button:hover{
   background-color: #262626;
 }
-
 .mat-button{
   border-radius: 0;
 }
 ::ng-deep .panel{
   border-radius: 0 !important;
 }
-
 .footer {
   background-color: sienna;
   text-align: center;
@@ -39,27 +34,43 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: 40px;
+  line-height: 40px;
 }
-
+.footer p{
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  margin: 0;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: "montserrat", sans-serif;
   background: #000 !important;
 }
-
 .middle {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .text {
   text-transform: uppercase;
   font-size: 40px;
   text-align: center;
   letter-spacing: 10px;
+}
+.userbar{
+  background-color: #262626;
+  height: 31px;
+}
+.mat-raised-button{
+  padding: 0 10px;
+  line-height: 25px;
+  position: absolute;
+  top: 3px;
+  right: 2px;
 }
 
 
