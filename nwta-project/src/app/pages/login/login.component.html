@@ -4,12 +4,12 @@
 
         <div class="inputs">
             <label for="login">Nazwa użytkownika</label>
-            <input name="login" [(ngModel)]="username" required> 
+            <input id="login" name="login" [(ngModel)]="username" required> 
         </div>
     
         <div class="inputs">
             <label for="password">Hasło</label>
-            <input type="password" name="password" [(ngModel)]="password" required>
+            <input id="password" type="password" name="password" [(ngModel)]="password" required>
         </div>
 
         <button type="submit" id="submit" mat-raised-button color="primary">Zaloguj się</button>

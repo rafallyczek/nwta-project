@@ -1,5 +1,6 @@
 import unittest
 from selenium import webdriver
+import time
 class TitleTests(unittest.TestCase):
     def setUp(self):
         pass
@@ -18,12 +19,27 @@ class TitleTests(unittest.TestCase):
         title = driver.title
         print(title)
         assert title == 'NwtaProject'
+    def test_login_page_title(self):
+        driver = self.driver
+        driver.get('http://localhost:4200/login')
+        title = driver.title
+        print(title)
+        assert title == 'NwtaProject'
     def test_addBook_page_title(self):
         driver = self.driver
+        driver.get('http://localhost:4200/login')
+        loginInput = driver.find_element_by_name('login')
+        loginInput.send_keys('test')
+        passwordInput = driver.find_element_by_name('password')
+        passwordInput.send_keys('test')
+        driver.find_element_by_id("submit").click()
+        time.sleep(2)
         driver.get('http://localhost:4200/addBook')
         title = driver.title
         print(title)
         assert title == 'NwtaProject'
+        driver.find_element_by_id("logout").click()
+        time.sleep(2)
     def tearDown(self):
         pass
     @classmethod
@@ -48,12 +64,27 @@ class FooterTextTests(unittest.TestCase):
         element = driver.find_element_by_class_name('footer')
         print(element.text)
         self.assertIn("Paweł Piotrowski, Rafał Łyczek", element.text)
+    def test_login_page_footerText(self):
+        driver = self.driver
+        driver.get('http://localhost:4200/login')
+        element = driver.find_element_by_class_name('footer')
+        print(element.text)
+        self.assertIn("Paweł Piotrowski, Rafał Łyczek", element.text)
     def test_addBook_page_footerText(self):
         driver = self.driver
+        driver.get('http://localhost:4200/login')
+        loginInput = driver.find_element_by_name('login')
+        loginInput.send_keys('test')
+        passwordInput = driver.find_element_by_name('password')
+        passwordInput.send_keys('test')
+        driver.find_element_by_id("submit").click()
+        time.sleep(2)
         driver.get('http://localhost:4200/addBook')
         element = driver.find_element_by_class_name('footer')
         print(element.text)
         self.assertIn("Paweł Piotrowski, Rafał Łyczek", element.text)
+        driver.find_element_by_id("logout").click()
+        time.sleep(2)
     def tearDown(self):
         pass
     @classmethod
@@ -68,29 +99,33 @@ class FormTests(unittest.TestCase):
         self.driver = webdriver.Chrome(executable_path='chromedriver.exe')
     def test_addBook_page_form(self):
         driver = self.driver
+        driver.get('http://localhost:4200/login')
+        loginInput = driver.find_element_by_name('login')
+        loginInput.send_keys('test')
+        passwordInput = driver.find_element_by_name('password')
+        passwordInput.send_keys('test')
+        driver.find_element_by_id("submit").click()
+        time.sleep(2)
         driver.get('http://localhost:4200/addBook')
         titleInput = driver.find_element_by_name('title')
-        titleInput.send_keys('Książka')
+        titleInput.send_keys('testbook')
         authorInput = driver.find_element_by_name('author')
-        authorInput.send_keys('Autor')
+        authorInput.send_keys('testauthor')
         yearInput = driver.find_element_by_name('year')
-        yearInput.send_keys('2020')
+        yearInput.send_keys('testyear')
         genreInput = driver.find_element_by_name('genre')
-        genreInput.send_keys('IT')
+        genreInput.send_keys('testgenre')
         driver.find_element_by_id("submit").click()
-        for index, element in enumerate(driver.find_elements_by_class_name('bookInfoBox')):
-            if index==16:
-                print(element.text)
-                self.assertIn("Książka", element.text)
-            if index==17:
-                print(element.text)
-                self.assertIn("Autor", element.text)
-            if index==18:
-                print(element.text)
-                self.assertIn("2020", element.text)
-            if index==19:
-                print(element.text)
-                self.assertIn("IT", element.text)
+        time.sleep(2)
+        driver.refresh()
+        test_values = ['testbook', 'testauthor', 'testyear', 'testgenre']
+        info_boxes = driver.find_elements_by_class_name('bookInfoBox')
+        texts = []
+        for i in range(len(info_boxes)):
+            texts.append(info_boxes[i].text)
+        for text in texts:
+            if text in test_values:
+                assert text in test_values
     def tearDown(self):
         pass
     @classmethod
