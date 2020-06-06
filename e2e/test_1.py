@@ -169,67 +169,7 @@ class FormTests(unittest.TestCase):
             .until(ec.visibility_of_element_located((By.XPATH, "//button[@id='logout']")))
         logout.click()
 
-    def tearDown(self):
-        pass
-
-    @classmethod
-    def tearDownClass(cls):
-        cls.driver.quit()
-
-
-class FormTests(unittest.TestCase):
-    driver = None
-
-    def setUp(self):
-        pass
-
-    @classmethod
-    def setUpClass(cls):
-        cls.driver = webdriver.Chrome(executable_path='chromedriver.exe')
-
-    def test_addBook_page_form(self):
-        driver = self.driver
-        driver.get('http://localhost:4200/login')
-        login_input = driver.find_element_by_name('login')
-        login_input.send_keys('test')
-        password_input = driver.find_element_by_name('password')
-        password_input.send_keys('test')
-        driver.find_element_by_id("submit").click()
-        time.sleep(2)
-        driver.get('http://localhost:4200/addBook')
-        title_input = driver.find_element_by_name('title')
-        title_input.send_keys('testbook')
-        author_input = driver.find_element_by_name('author')
-        author_input.send_keys('testauthor')
-        year_input = driver.find_element_by_name('year')
-        year_input.send_keys('testyear')
-        genre_input = driver.find_element_by_name('genre')
-        genre_input.send_keys('testgenre')
-        driver.find_element_by_id("submit").click()
-        time.sleep(2)
-        driver.refresh()
-        time.sleep(2)
-        driver.maximize_window()
-        test_values = ['testbook', 'testauthor', 'testyear', 'testgenre']
-        info_boxes = driver.find_elements_by_class_name('bookInfoBox')
-        texts = []
-        for i in range(len(info_boxes)):
-            texts.append(info_boxes[i].text)
-        for text in texts:
-            if text in test_values:
-                assert text in test_values
-        book = WebDriverWait(driver, 10) \
-            .until(ec.visibility_of_element_located((By.XPATH, "//div[contains(text(), 'testgenre')]")))
-        ActionChains(driver).move_to_element(book).perform()
-        button = WebDriverWait(driver, 10) \
-            .until(ec.visibility_of_element_located((By.XPATH, "//div[contains(text(), "
-                                                               "'testgenre')]/following-sibling::div/button")))
-        button.click()
-        logout = WebDriverWait(driver, 10) \
-            .until(ec.visibility_of_element_located((By.XPATH, "//button[@id='logout']")))
-        logout.click()
-
-    def test_adit_page_form(self):
+    def test_edit_page_form(self):
         driver = self.driver
         driver.get('http://localhost:4200/login')
         login_input = driver.find_element_by_name('login')
