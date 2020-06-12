@@ -23,6 +23,7 @@ public class User implements UserDetails {
     private Integer id;
 
     private String username, password;
+    private boolean admin;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

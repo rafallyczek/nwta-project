@@ -34,4 +34,9 @@ public class UserController {
         return username.equals(user.getUsername()) && password.equals(user.getPassword());
     }
 
+    @GetMapping("/getUser/{username}")
+    public UserDetails getUser(@PathVariable String username){
+        return userService.loadUserByUsername(username);
+    }
+
 }
