@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 08 Cze 2020, 08:57
+-- Czas generowania: 12 Cze 2020, 13:01
 -- Wersja serwera: 10.3.15-MariaDB
 -- Wersja PHP: 7.3.6
 
@@ -54,16 +54,19 @@ INSERT INTO `books` (`id`, `title`, `author`, `year`, `genre`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` text COLLATE utf8_polish_ci NOT NULL,
-  `password` text COLLATE utf8_polish_ci NOT NULL
+  `password` text COLLATE utf8_polish_ci NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(1, 'test', 'test'),
-(2, 'test2', 'test');
+INSERT INTO `users` (`id`, `username`, `password`, `admin`) VALUES
+(1, 'test', 'test', 0),
+(2, 'test2', 'test', 0),
+(3, 'admin', 'admin', 1),
+(4, 'test3', 'test', 0);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -95,7 +98,7 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
