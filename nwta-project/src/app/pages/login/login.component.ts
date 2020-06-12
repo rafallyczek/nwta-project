@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { LoggedUser } from 'src/app/models/loggeduser-model/loggeduser.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,11 @@ export class LoginComponent implements OnInit {
   private username;
   private password;
 
-  constructor(private http: HttpClient, private router: Router, private authService: AuthService) {
+  constructor(
+    private http: HttpClient, 
+    private router: Router, 
+    private authService: AuthService,
+    private loggedUser: LoggedUser) {
     this.router.events.subscribe(
       (event) => {
         if(event instanceof NavigationEnd){
@@ -37,6 +42,7 @@ export class LoginComponent implements OnInit {
       if(data){
         sessionStorage.setItem('token',btoa(this.username+':'+this.password));
         sessionStorage.setItem('username',this.username);
+        this.getUserData();
         this.router.navigate(['home']);
       }else{
         alert("Błąd autentykacji.");
@@ -48,6 +54,21 @@ export class LoginComponent implements OnInit {
         alert("Odmowa dostępu.");
       }
     });
+  }
+
+  getUserData(){
+    const headers = new HttpHeaders().set('Authorization','Basic '+sessionStorage.getItem('token'));
+
+    this.http.get(`${this.baseUrl}/getUser/`+sessionStorage.getItem('username'), {headers: headers})
+      .subscribe(data => {
+        console.log(data);
+        this.loggedUser.setLoggedUser(
+          data['id'],
+          data['username'],
+          data['admin']);
+          console.log(this.loggedUser.getLoggedUser());        
+      },
+        error => console.log(error));
   }
 
 }

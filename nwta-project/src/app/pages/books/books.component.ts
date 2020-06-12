@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from './book/book';
-import { BooksService } from './book/books.service';
+import { Book } from 'src/app/models/book-model/book';
+import { BooksService } from 'src/app/services/book-service/books.service';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({

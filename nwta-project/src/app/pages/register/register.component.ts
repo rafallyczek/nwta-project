@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './user/user';
-import { UserService } from './user/user.service';
+import { User } from 'src/app/models/user-model/user';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'app-register',
@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
   }
 
   save() {
+    this.user.admin = false;
     this.userService.addUser(this.user)
       .subscribe(
         data => {

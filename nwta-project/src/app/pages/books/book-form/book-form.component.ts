@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksService } from '../book/books.service';
+import { Book } from 'src/app/models/book-model/book';
+import { BooksService } from 'src/app/services/book-service/books.service';
 import { Router } from '@angular/router';
-import { Book } from '../book/book';
 
 @Component({
   selector: 'app-book-form',
