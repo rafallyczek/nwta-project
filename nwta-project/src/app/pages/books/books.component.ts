@@ -12,15 +12,9 @@ export class BooksComponent implements OnInit {
 
   books: Array<Book>;
 
-  constructor( private booksService : BooksService, private router: Router) { 
-    this.router.events.subscribe(
-      (event) => {
-        if(event instanceof NavigationEnd){
-          this.getAllBooks();
-        }
-      }
-    );
-  }
+  constructor( 
+    private booksService : BooksService, 
+    private router: Router) { }
 
   ngOnInit() {
     this.getAllBooks();

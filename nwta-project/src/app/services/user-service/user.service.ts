@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,11 +12,17 @@ export class UserService {
   constructor( private http: HttpClient ) { }
 
   deleteUser(id: number) : Observable<any> {
-    return this.http.get(`${this.baseUrl}/deleteUser/${id}`);
+    const headers = new HttpHeaders().set('Authorization','Basic '+sessionStorage.getItem("token"));
+    return this.http.get(`${this.baseUrl}/deleteUser/${id}`, {headers: headers});
   }
 
   addUser(user: any) : Observable<any> {
     return this.http.post(`${this.baseUrl}/addUser`, user);
+  }
+
+  getAllUsers() : Observable<any> {
+    const headers = new HttpHeaders().set('Authorization','Basic '+sessionStorage.getItem("token"));
+    return this.http.get(`${this.baseUrl}/users`, {headers: headers});
   }
 
 }

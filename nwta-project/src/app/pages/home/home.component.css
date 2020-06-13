@@ -7,3 +7,10 @@
 .hello{
     text-align: center;
 }
+.mat-myclass{
+    background-color: rgb(28, 184, 28);
+    color: white;
+}
+.linkButton{
+    margin-bottom: 10px;
+}

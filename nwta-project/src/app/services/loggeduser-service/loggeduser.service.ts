@@ -13,7 +13,8 @@ export class LoggedUser {
     return this;
   }
 
-  setLoggedUser(id: number,
+  setLoggedUser(
+    id: number,
     username: string,
     admin: boolean) {
 

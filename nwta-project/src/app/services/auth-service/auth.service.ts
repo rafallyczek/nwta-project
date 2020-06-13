@@ -9,10 +9,8 @@ export class AuthService {
 
   isLoggedIn(){
     if(sessionStorage.getItem('token')==null){
-      // console.log(sessionStorage.getItem('token'))
       return false;
     }else{
-      // console.log(sessionStorage.getItem('token'))
       return true;
     }     
   }

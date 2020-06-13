@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router, NavigationEnd } from '@angular/router';
-import { AuthService } from 'src/app/services/auth-service/auth.service';
-import { LoggedUser } from 'src/app/models/loggeduser-model/loggeduser.service';
+import { Router } from '@angular/router';
+import { LoggedUser } from 'src/app/services/loggeduser-service/loggeduser.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-login',
@@ -18,30 +18,20 @@ export class LoginComponent implements OnInit {
   constructor(
     private http: HttpClient, 
     private router: Router, 
-    private authService: AuthService,
-    private loggedUser: LoggedUser) {
-    this.router.events.subscribe(
-      (event) => {
-        if(event instanceof NavigationEnd){
-          if(this.authService.isLoggedIn()){
-            this.router.navigate(['home']);
-          }
-        }
-      }
-    );
-   }
+    private loggedUser: LoggedUser,
+    private appComponent: AppComponent,) { }
 
   ngOnInit() {
   }
 
   login() { 
     const headers = new HttpHeaders().set('Authorization','Basic '+btoa(this.username+':'+this.password));
+
     this.http.get(`${this.baseUrl}/login`, {headers})
     .subscribe(data => {
       console.log(data);
       if(data){
         sessionStorage.setItem('token',btoa(this.username+':'+this.password));
-        sessionStorage.setItem('username',this.username);
         this.getUserData();
         this.router.navigate(['home']);
       }else{
@@ -59,14 +49,15 @@ export class LoginComponent implements OnInit {
   getUserData(){
     const headers = new HttpHeaders().set('Authorization','Basic '+sessionStorage.getItem('token'));
 
-    this.http.get(`${this.baseUrl}/getUser/`+sessionStorage.getItem('username'), {headers: headers})
+    this.http.get(`${this.baseUrl}/getUser/`+this.username, {headers: headers})
       .subscribe(data => {
         console.log(data);
         this.loggedUser.setLoggedUser(
           data['id'],
           data['username'],
           data['admin']);
-          console.log(this.loggedUser.getLoggedUser());        
+          console.log(this.loggedUser.getLoggedUser()); 
+          this.appComponent.refreshUser();       
       },
         error => console.log(error));
   }

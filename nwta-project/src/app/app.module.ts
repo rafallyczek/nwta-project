@@ -8,6 +8,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './services/auth-service/auth.service';
+import { AdminAuthGuard } from './auth/adminauth.guard';
+import { AdminauthService } from './services/adminauth-service/adminauth.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { AuthService } from './services/auth-service/auth.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, AdminAuthGuard, AdminauthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
