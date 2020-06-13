@@ -33,7 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/deleteBook",
                         "/update",
                         "/bookById",
-                        "/getUser").authenticated()
+                        "/getUser",
+                        "/users",
+                        "/deleteUser").authenticated()
                 .antMatchers("/","/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

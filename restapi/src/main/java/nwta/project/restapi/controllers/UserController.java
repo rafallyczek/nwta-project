@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -37,6 +38,11 @@ public class UserController {
     @GetMapping("/getUser/{username}")
     public UserDetails getUser(@PathVariable String username){
         return userService.loadUserByUsername(username);
+    }
+
+    @GetMapping("/users")
+    public List<User> getAllUsers(){
+        return userService.getAllUsers();
     }
 
 }
