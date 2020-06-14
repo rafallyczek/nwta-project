@@ -1,0 +1,29 @@
+.container{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.info{
+    text-align: center;
+}
+.user{
+    margin-left: auto;
+    margin-top: auto;
+    display: inline-block;
+    text-align: left;
+}
+.userHeader{
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: 5px;
+    display: inline-block;
+    text-align: left;
+}
+.userInfoBox{
+    float: left;
+    padding: 5px;
+    width: 286px;
+    margin: 2px;
+    background-color: #404040;
+}
