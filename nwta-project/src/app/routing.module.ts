@@ -9,6 +9,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AdminAuthGuard } from './auth/adminauth.guard';
 import { BookEditComponent } from './pages/books/book-edit/book-edit.component';
 import { UsersComponent } from './pages/users/users.component';
+import { GuestAuthGuard } from './auth/guestauth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'books', component: BooksComponent },
   { path: 'addBook', canActivate:[AuthGuard], component: BookFormComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', canActivate:[GuestAuthGuard], component: LoginComponent },
   { path: 'edit', canActivate:[AuthGuard], component: BookEditComponent},
   { path: 'users', canActivate:[AdminAuthGuard], component: UsersComponent}
 ];

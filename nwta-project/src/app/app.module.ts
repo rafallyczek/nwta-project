@@ -9,7 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './services/auth-service/auth.service';
 import { AdminAuthGuard } from './auth/adminauth.guard';
+import { GuestAuthGuard } from './auth/guestauth.guard';
 import { AdminauthService } from './services/adminauth-service/adminauth.service';
+import { GuestauthService } from './services/guestauth-service/guestauth.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { AdminauthService } from './services/adminauth-service/adminauth.service
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthGuard, AuthService, AdminAuthGuard, AdminauthService],
+  providers: [AuthGuard, AuthService, AdminAuthGuard, AdminauthService, GuestAuthGuard, GuestauthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
