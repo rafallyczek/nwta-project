@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/book-model/book';
 import { BooksService } from 'src/app/services/book-service/books.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
+import { BooksComponent } from '../books.component';
 
 @Component({
   selector: 'app-book-edit',
@@ -12,14 +13,9 @@ export class BookEditComponent implements OnInit {
 
   book: Book = new Book();
 
-  constructor(private booksService: BooksService, private router: Router) {
-    this.router.events.subscribe(
-      (event) => {
-        if(event instanceof NavigationEnd){
-          this.loadBookData();
-        }
-      }
-    );
+  constructor(
+    private booksService: BooksService,
+    private router: Router) {
    }
 
   ngOnInit() {
@@ -39,7 +35,7 @@ export class BookEditComponent implements OnInit {
           this.book = data;
         },
         error => console.log(error)
-        ); 
+      ); 
   }
 
   //Aktualizuj książkę
@@ -48,11 +44,11 @@ export class BookEditComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
+          this.router.navigate(["/books"]);
         },
         error => console.log(error)
         );
-        this.book = new Book();
-        this.router.navigate(["/books"]);      
+        this.book = new Book();             
   }
 
 }

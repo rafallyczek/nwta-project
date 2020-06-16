@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { LoggedUser } from 'src/app/services/loggeduser-service/loggeduser.service';
 import { AppComponent } from 'src/app/app.component';
 
 @Component({
@@ -18,8 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private http: HttpClient, 
     private router: Router, 
-    private loggedUser: LoggedUser,
-    private appComponent: AppComponent,) { }
+    private appComponent: AppComponent) { }
 
   ngOnInit() {
   }
@@ -31,7 +29,7 @@ export class LoginComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
       if(data){
-        sessionStorage.setItem('token',btoa(this.username+':'+this.password));
+        localStorage.setItem('token',btoa(this.username+':'+this.password));
         this.getUserData();
         this.router.navigate(['home']);
       }else{
@@ -47,19 +45,17 @@ export class LoginComponent implements OnInit {
   }
 
   getUserData(){
-    const headers = new HttpHeaders().set('Authorization','Basic '+sessionStorage.getItem('token'));
+    const headers = new HttpHeaders().set('Authorization','Basic '+localStorage.getItem('token'));
 
     this.http.get(`${this.baseUrl}/getUser/`+this.username, {headers: headers})
       .subscribe(data => {
         console.log(data);
-        this.loggedUser.setLoggedUser(
-          data['id'],
-          data['username'],
-          data['admin']);
-          console.log(this.loggedUser.getLoggedUser()); 
-          this.appComponent.refreshUser();       
+        localStorage.setItem('id',data['id']);
+        localStorage.setItem('username',data['username']);
+        localStorage.setItem('admin',data['admin']); 
+        this.appComponent.refreshUser();       
       },
-        error => console.log(error));
+      error => console.log(error));
   }
 
 }

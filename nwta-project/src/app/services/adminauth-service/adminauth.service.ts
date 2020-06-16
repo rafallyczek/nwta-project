@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { LoggedUser } from '../loggeduser-service/loggeduser.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminauthService {
 
-  constructor(private loggedUser: LoggedUser) { }
+  constructor() { }
 
   isLoggedIn() {
-    if (sessionStorage.getItem('token')!=null && this.loggedUser.getAdmin()==true) {
+    if (localStorage.getItem('token')!=null && localStorage.getItem('admin')) {
       return true;
     } else {
       return false;

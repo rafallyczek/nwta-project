@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth-service/auth.service';
-import { LoggedUser } from './services/loggeduser-service/loggeduser.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,24 +10,23 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'nwta-project';
 
-  user: LoggedUser;
+  username: string;
+  admin: boolean;
 
   constructor(
     private authService: AuthService, 
-    private loggedUser: LoggedUser,
     private router: Router) { }
 
   ngOnInit(){
-    // this.user = this.loggedUser.getLoggedUser();
-    // sessionStorage.removeItem('token');
-    // this.user = null;
-    // this.refreshUser();
-  }
+    this.username = localStorage.getItem('username');
+    this.admin = localStorage.getItem('username') ? true : false;
+   }
 
   logout(){
-    sessionStorage.removeItem('token');
-    this.user = null;
-    console.log(this.user);
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('username');
+    localStorage.removeItem('admin');
     this.router.navigate(["/home"]);
   }
 
@@ -37,9 +35,11 @@ export class AppComponent implements OnInit {
   }
 
   refreshUser() {
-    if (sessionStorage.length > 0) {
-      this.user = this.loggedUser.getLoggedUser();
-      console.log(this.user);
+    if (localStorage.length > 0) {
+      this.username = localStorage.getItem('username');
+      console.log(this.username);
+      this.admin = localStorage.getItem('username') ? true : false;
+      console.log(this.admin);
     }
   }
 

@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="userbar" *ngIf="isLoggedIn()">
-    <p>Użytkownik: {{user.username}}</p>
+    <p>Użytkownik: {{username}}</p>
     <button id="logout" class="mat-raised-button mat-button-base mat-warn" (click)="logout()" routerLink="/home" >Wyloguj</button>
   </div>
 
@@ -20,7 +20,7 @@
       <button mat-menu-item routerLink="/addBook">Dodaj książkę</button>
     </mat-menu>
 
-    <button mat-button [matMenuTriggerFor]="menu2" *ngIf="user!=null && user.admin">Panel administratora</button>
+    <button mat-button [matMenuTriggerFor]="menu2" *ngIf="username!=null && admin">Panel administratora</button>
     <mat-menu #menu2="matMenu" class="panel">
       <button mat-menu-item routerLink="/users">Użytkownicy</button>
     </mat-menu>

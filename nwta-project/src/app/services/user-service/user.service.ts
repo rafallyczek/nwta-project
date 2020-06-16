@@ -12,7 +12,7 @@ export class UserService {
   constructor( private http: HttpClient ) { }
 
   deleteUser(id: number) : Observable<any> {
-    const headers = new HttpHeaders().set('Authorization','Basic '+sessionStorage.getItem("token"));
+    const headers = new HttpHeaders().set('Authorization','Basic '+localStorage.getItem("token"));
     return this.http.get(`${this.baseUrl}/deleteUser/${id}`, {headers: headers});
   }
 
@@ -21,7 +21,7 @@ export class UserService {
   }
 
   getAllUsers() : Observable<any> {
-    const headers = new HttpHeaders().set('Authorization','Basic '+sessionStorage.getItem("token"));
+    const headers = new HttpHeaders().set('Authorization','Basic '+localStorage.getItem("token"));
     return this.http.get(`${this.baseUrl}/users`, {headers: headers});
   }
 
