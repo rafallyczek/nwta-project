@@ -10,6 +10,7 @@ import { AdminAuthGuard } from './auth/adminauth.guard';
 import { BookEditComponent } from './pages/books/book-edit/book-edit.component';
 import { UsersComponent } from './pages/users/users.component';
 import { GuestAuthGuard } from './auth/guestauth.guard';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', canActivate:[GuestAuthGuard], component: LoginComponent },
   { path: 'edit', canActivate:[AuthGuard], component: BookEditComponent},
-  { path: 'users', canActivate:[AdminAuthGuard], component: UsersComponent}
+  { path: 'users', canActivate:[AdminAuthGuard], component: UsersComponent},
+  { path: 'userDetails', canActivate:[AuthGuard], component: UserDetailsComponent}
 ];
 
 @NgModule({
@@ -40,5 +42,6 @@ export const routingComponents = [
   RegisterComponent,
   LoginComponent,
   BookEditComponent,
-  UsersComponent
+  UsersComponent,
+  UserDetailsComponent
 ]

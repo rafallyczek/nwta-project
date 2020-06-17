@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.username = localStorage.getItem('username');
-    this.admin = localStorage.getItem('username') ? true : false;
+    this.admin = localStorage.getItem('username')=='true' ? true : false;
    }
 
   logout(){
