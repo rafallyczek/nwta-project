@@ -11,6 +11,8 @@ export class AppComponent implements OnInit {
   title = 'nwta-project';
 
   username: string;
+  name: string;
+  surname: string;
   admin: boolean;
 
   constructor(
@@ -19,6 +21,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.username = localStorage.getItem('username');
+    this.name = localStorage.getItem('name');
+    this.surname = localStorage.getItem('surname');
     this.admin = localStorage.getItem('username')=='true' ? true : false;
    }
 
@@ -26,6 +30,8 @@ export class AppComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('id');
     localStorage.removeItem('username');
+    localStorage.removeItem('name');
+    localStorage.removeItem('surname');
     localStorage.removeItem('admin');
     this.router.navigate(["/home"]);
   }

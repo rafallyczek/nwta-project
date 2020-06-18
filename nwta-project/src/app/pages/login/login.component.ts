@@ -52,7 +52,9 @@ export class LoginComponent implements OnInit {
         console.log(data);
         localStorage.setItem('id',data['id']);
         localStorage.setItem('username',data['username']);
-        localStorage.setItem('admin',data['admin']); 
+        localStorage.setItem('name',data['name']);
+        localStorage.setItem('surname',data['surname']);
+        localStorage.setItem('admin',data['admin']);        
         this.appComponent.refreshUser();       
       },
       error => console.log(error));

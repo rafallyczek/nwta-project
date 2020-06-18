@@ -27,3 +27,17 @@
     margin: 2px;
     background-color: #404040;
 }
+.userIdInfoBox{
+    float: left;
+    padding: 5px;
+    width: 50px;
+    margin: 2px;
+    background-color: #404040;
+}
+.userAdminInfoBox{
+    float: left;
+    padding: 5px;
+    width: 100px;
+    margin: 2px;
+    background-color: #404040;
+}

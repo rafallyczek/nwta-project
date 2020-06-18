@@ -8,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class UserDetailsComponent implements OnInit {
 
   username: string;
+  name: string;
+  surname: string;
 
   constructor() { }
 
   ngOnInit() {
     this.username = localStorage.getItem('username');
+    this.name = localStorage.getItem('name');
+    this.surname = localStorage.getItem('surname');
   }
 
 }

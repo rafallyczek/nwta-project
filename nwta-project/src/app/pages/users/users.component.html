@@ -1,15 +1,19 @@
 <div class="container">
     <h1 class="info">Użytkownicy</h1>
     <div class="userHeader">
-        <div class="userInfoBox">ID</div>
+        <div class="userIdInfoBox">ID</div>
         <div class="userInfoBox">NAZWA UŻYTKOWNIKA</div>
-        <div class="userInfoBox">CZY ADMIN</div>
+        <div class="userInfoBox">IMIĘ</div>
+        <div class="userInfoBox">NAZWISKO</div>
+        <div class="userAdminInfoBox">CZY ADMIN</div>
         <div style="clear: both;"></div>
     </div>
     <div class="user" *ngFor="let user of users">
-        <div class="userInfoBox">{{user.id}}</div>
+        <div class="userIdInfoBox">{{user.id}}</div>
         <div class="userInfoBox">{{user.username}}</div>
-        <div class="userInfoBox">{{user.admin==true?'Tak':'Nie'}}</div>
+        <div class="userInfoBox">{{user.name}}</div>
+        <div class="userInfoBox">{{user.surname}}</div>
+        <div class="userAdminInfoBox">{{user.admin==true?'Tak':'Nie'}}</div>
         <div style="clear: both;"></div>
     </div>
 </div>

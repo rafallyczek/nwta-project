@@ -12,6 +12,16 @@
             <input id="password" type="password" name="password" [(ngModel)]="user.password" required>
         </div>
 
+        <div class="inputs">
+            <label for="name">Imię</label>
+            <input id="name" type="name" name="name" [(ngModel)]="user.name" required>
+        </div>
+
+        <div class="inputs">
+            <label for="surname">Nazwisko</label>
+            <input id="surname" type="surname" name="surname" [(ngModel)]="user.surname" required>
+        </div>
+
         <button type="submit" mat-raised-button color="primary">Zarejestruj się</button>
     </form>
 </div>

@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="userbar" *ngIf="isLoggedIn()">
-    <p>Użytkownik: <a class="username" routerLink="/userDetails">{{username}}</a></p>
+    <p>Użytkownik: <a class="username" routerLink="/userDetails">{{name}} {{surname}} ({{username}})</a></p>
     <button id="logout" class="mat-raised-button mat-button-base mat-warn" (click)="logout()" routerLink="/home" >Wyloguj</button>
   </div>
 
