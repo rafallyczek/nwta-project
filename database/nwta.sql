@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 12 Cze 2020, 13:01
+-- Czas generowania: 18 Cze 2020, 10:28
 -- Wersja serwera: 10.3.15-MariaDB
 -- Wersja PHP: 7.3.6
 
@@ -55,6 +55,8 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` text COLLATE utf8_polish_ci NOT NULL,
   `password` text COLLATE utf8_polish_ci NOT NULL,
+  `name` text COLLATE utf8_polish_ci NOT NULL,
+  `surname` text COLLATE utf8_polish_ci NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
@@ -62,11 +64,12 @@ CREATE TABLE `users` (
 -- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `admin`) VALUES
-(1, 'test', 'test', 0),
-(2, 'test2', 'test', 0),
-(3, 'admin', 'admin', 1),
-(4, 'test3', 'test', 0);
+INSERT INTO `users` (`id`, `username`, `password`, `name`, `surname`, `admin`) VALUES
+(1, 'test', 'test', 'Jan', 'Kowalski', 0),
+(2, 'test2', 'test', 'Zbigniew', 'Bańka', 0),
+(3, 'admin', 'admin', 'Admin', 'Adminowski', 1),
+(4, 'test3', 'test', 'Wiesław', 'Wolny', 0),
+(5, 'test4', 'test', 'Aragorn', 'syn Arathorna', 0);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -92,13 +95,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
