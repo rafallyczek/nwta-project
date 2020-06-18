@@ -22,7 +22,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String username, password;
+    private String username, password, name, surname;
     private boolean admin;
 
     @Override
