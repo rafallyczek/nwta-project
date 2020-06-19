@@ -31,11 +31,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/addBook",
                         "/deleteBook",
-                        "/update",
+                        "/updateBook",
                         "/bookById",
                         "/getUser",
                         "/users",
-                        "/deleteUser").authenticated()
+                        "/deleteUser",
+                        "/updateUser").authenticated()
                 .antMatchers("/","/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
