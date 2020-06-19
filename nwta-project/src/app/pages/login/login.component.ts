@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,22 +10,19 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class LoginComponent implements OnInit {
 
-  private baseUrl = "http://localhost:8080";
   private username;
   private password;
 
-  constructor(
-    private http: HttpClient, 
+  constructor( 
     private router: Router, 
-    private appComponent: AppComponent) { }
+    private appComponent: AppComponent,
+    private userService: UserService) { }
 
   ngOnInit() {
   }
 
   login() { 
-    const headers = new HttpHeaders().set('Authorization','Basic '+btoa(this.username+':'+this.password));
-
-    this.http.get(`${this.baseUrl}/login`, {headers})
+    this.userService.login(this.username,this.password)
     .subscribe(data => {
       console.log(data);
       if(data){
@@ -45,9 +42,7 @@ export class LoginComponent implements OnInit {
   }
 
   getUserData(){
-    const headers = new HttpHeaders().set('Authorization','Basic '+localStorage.getItem('token'));
-
-    this.http.get(`${this.baseUrl}/getUser/`+this.username, {headers: headers})
+    this.userService.getUser(this.username)
       .subscribe(data => {
         console.log(data);
         localStorage.setItem('id',data['id']);

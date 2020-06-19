@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @PostMapping("/updateUser")
-    public void updateBook(@RequestBody User user){
+    public void updateUser(@RequestBody User user){
         userService.updateUser(user);
     }
 

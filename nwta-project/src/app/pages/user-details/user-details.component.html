@@ -1,8 +1,28 @@
 <div class="container">
     <h1 class="info">Panel użytkownika</h1>
 
-    <p>Nazwa użytkownika: {{username}}</p>
-    <p>Imię: {{name}}</p>
-    <p>Nazwisko: {{surname}}</p>
+    <div class="userDetails">
+        <p>Nazwa użytkownika: {{username}}</p>
+        <p>Imię: {{name}}</p>
+        <p>Nazwisko: {{surname}}</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+
+        <h2>Zmień dane</h2>
+    
+        <div class="inputs">
+            <label for="name">Imię</label>
+            <input type="text" name="name" [(ngModel)]="user.name"> 
+        </div>
+        
+        <div class="inputs">
+            <label for="surname">Nazwisko</label>
+            <input type="text" name="surname" [(ngModel)]="user.surname">
+        </div>
+    
+        <button type="submit" id="submit" mat-raised-button color="primary">Zapisz</button>
+    
+    </form>
 
 </div>
