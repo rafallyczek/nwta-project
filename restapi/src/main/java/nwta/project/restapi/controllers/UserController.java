@@ -1,5 +1,6 @@
 package nwta.project.restapi.controllers;
 
+import nwta.project.restapi.model.Book;
 import nwta.project.restapi.model.User;
 import nwta.project.restapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,11 @@ public class UserController {
     @GetMapping("/users")
     public List<User> getAllUsers(){
         return userService.getAllUsers();
+    }
+
+    @PostMapping("/updateUser")
+    public void updateBook(@RequestBody User user){
+        userService.updateUser(user);
     }
 
 }

@@ -40,4 +40,11 @@ public class UserService implements UserDetailsService {
         return users;
     }
 
+    public void updateUser(User user){
+        User newUser = userRepository.findById(user.getId()).get();
+        newUser.setName(user.getName());
+        newUser.setSurname(user.getSurname());
+        userRepository.save(newUser);
+    }
+
 }
