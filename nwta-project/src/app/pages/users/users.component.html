@@ -14,6 +14,7 @@
         <div class="userInfoBox">{{user.name}}</div>
         <div class="userInfoBox">{{user.surname}}</div>
         <div class="userAdminInfoBox">{{user.admin==true?'Tak':'Nie'}}</div>
+        <div *ngIf="user.id!=loggedUserId" class="delete"><button (click)="deleteUser(user.id)">Usuń</button></div>
         <div style="clear: both;"></div>
     </div>
 </div>

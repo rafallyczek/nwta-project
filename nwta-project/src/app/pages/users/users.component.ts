@@ -10,12 +10,14 @@ import { User } from 'src/app/models/user-model/user';
 export class UsersComponent implements OnInit {
 
   users: Array<User>;
+  loggedUserId: number;
 
   constructor(
     private userService: UserService
   ) { }
 
   ngOnInit() {
+    this.loggedUserId = parseInt(localStorage.getItem("id"));
     this.getAllUsers();
   }
 
@@ -28,6 +30,17 @@ export class UsersComponent implements OnInit {
         },
         error => console.log(error)
       );
+  }
+
+  deleteUser(id: number){
+    this.userService.deleteUser(id)
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => console.log(error)
+      );
+      window.location.reload();
   }
 
 }

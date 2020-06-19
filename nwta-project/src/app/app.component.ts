@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   name: string;
   surname: string;
   admin: boolean;
+  fullUserName: string;
 
   constructor(
     private authService: AuthService, 
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
     this.name = localStorage.getItem('name');
     this.surname = localStorage.getItem('surname');
     this.admin = localStorage.getItem('username')=='true' ? true : false;
+    this.fullUserName = this.username + " (" + this.name + " " + this.surname + ")";
    }
 
   logout(){
@@ -43,9 +45,10 @@ export class AppComponent implements OnInit {
   refreshUser() {
     if (localStorage.length > 0) {
       this.username = localStorage.getItem('username');
-      console.log(this.username);
+      this.name = localStorage.getItem('name');
+      this.surname = localStorage.getItem('surname');
       this.admin = localStorage.getItem('username') ? true : false;
-      console.log(this.admin);
+      this.fullUserName = this.username + " (" + this.name + " " + this.surname + ")";
     }
   }
 

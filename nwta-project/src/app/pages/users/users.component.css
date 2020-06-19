@@ -12,6 +12,7 @@
     margin-top: auto;
     display: inline-block;
     text-align: left;
+    position: relative;
 }
 .userHeader{
     margin-left: auto;
@@ -40,4 +41,26 @@
     width: 100px;
     margin: 2px;
     background-color: #404040;
+}
+.delete{    
+    position: absolute;
+    right: -36px;
+    top: 2px;
+    height: 28px;
+}
+.delete button{
+    position: relative;
+    top: 4px;
+    left: 5px;
+    padding: 3px;
+    background-color: red;
+    border-radius: 5px;
+    display: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+.user:hover .delete button{
+    display: block;
 }
