@@ -25,4 +25,9 @@ export class UserService {
     return this.http.get(`${this.baseUrl}/users`, {headers: headers});
   }
 
+  updateUser(user: any) : Observable<any> {
+    const headers = new HttpHeaders().set('Authorization','Basic '+localStorage.getItem("token"));
+    return this.http.post(`${this.baseUrl}/updateUser`, user, {headers: headers});
+  }
+
 }

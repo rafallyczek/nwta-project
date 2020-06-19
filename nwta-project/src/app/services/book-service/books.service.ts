@@ -20,29 +20,25 @@ export class BooksService {
   //Pobierz książkę o zadanym id
   getBookById(id: number) : Observable<any> {
     const headers = new HttpHeaders().set('Authorization','Basic '+localStorage.getItem("token"));
-    console.log(headers);
     return this.http.get(`${this.url}/bookById/`+id, {headers: headers});
   }
 
   //Dodaj nową książkę
   saveBook(book: any) : Observable<any> {
     const headers = new HttpHeaders().set('Authorization','Basic '+localStorage.getItem("token"));
-    console.log(headers);
     return this.http.post(`${this.url}/addBook`, book, {headers: headers});
   }
 
   //Usuń książkę
   deleteBook(id: number) : Observable<any>{
     const headers = new HttpHeaders().set('Authorization','Basic '+localStorage.getItem("token"));
-    console.log(headers);
     return this.http.delete(`${this.url}/deleteBook/`+id, {headers: headers});
   }
 
   //Aktualizuj książkę
   updateBook(book: any) : Observable<any> {
     const headers = new HttpHeaders().set('Authorization','Basic '+localStorage.getItem("token"));
-    console.log(headers);
-    return this.http.post(`${this.url}/update`, book, {headers: headers});
+    return this.http.post(`${this.url}/updateBook`, book, {headers: headers});
   }
 
   //Ustaw editId
