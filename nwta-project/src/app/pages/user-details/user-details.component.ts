@@ -56,11 +56,6 @@ export class UserDetailsComponent implements OnInit {
         data => {
           console.log(data);
           this.user.id = data['id'];
-          // this.user.username = data['username'];
-          // this.user.password = data['password'];
-          // this.user.name = data['name'];
-          // this.user.surname = data['surname'];
-          // this.user.admin = data['admin'];
         },
         error => console.log(error)
       ); 
@@ -71,9 +66,7 @@ export class UserDetailsComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          if(this.user.password!=atob(localStorage.getItem('token')).split(":")[1]){
-            localStorage.setItem('token',btoa(this.username+':'+pass));
-          }
+          localStorage.setItem('token',btoa(this.username+':'+pass));
           this.refresh();
           window.location.reload();
           this.user = new User();
