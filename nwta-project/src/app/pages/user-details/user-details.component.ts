@@ -15,6 +15,7 @@ export class UserDetailsComponent implements OnInit {
   surname: string;
   user: User = new User();
   confirmPass: string;
+  confirmPass2: string;
   repeatedPass: string;
 
   constructor(
@@ -33,17 +34,19 @@ export class UserDetailsComponent implements OnInit {
     if(this.confirmPass!=atob(localStorage.getItem('token')).split(":")[1]){
       alert("Nieprawidłowe hasło.");
     }else{
-      this.update();
+      this.update(this.confirmPass);
     }    
   }
 
   onSubmitPass(){
-    if(this.confirmPass!=atob(localStorage.getItem('token')).split(":")[1]){
+    if(this.confirmPass2!=atob(localStorage.getItem('token')).split(":")[1]){
+      console.log(this.confirmPass2);
+      console.log(atob(localStorage.getItem('token')).split(":")[1]);
       alert("Nieprawidłowe hasło.");
     }else if(this.user.password!=this.repeatedPass){
       alert("Hasła muszą się zgadzać.");
     }else{
-      this.update();
+      this.update(this.confirmPass2);
     }    
   }
 
@@ -53,23 +56,23 @@ export class UserDetailsComponent implements OnInit {
         data => {
           console.log(data);
           this.user.id = data['id'];
-          this.user.username = data['username'];
-          this.user.password = data['password'];
-          this.user.name = data['name'];
-          this.user.surname = data['surname'];
-          this.user.admin = data['admin'];
+          // this.user.username = data['username'];
+          // this.user.password = data['password'];
+          // this.user.name = data['name'];
+          // this.user.surname = data['surname'];
+          // this.user.admin = data['admin'];
         },
         error => console.log(error)
       ); 
   }
 
-  update(){
+  update(pass: string){
     this.userService.updateUser(this.user)
       .subscribe(
         data => {
           console.log(data);
           if(this.user.password!=atob(localStorage.getItem('token')).split(":")[1]){
-            localStorage.setItem('token',btoa(this.username+':'+this.user.password));
+            localStorage.setItem('token',btoa(this.username+':'+pass));
           }
           this.refresh();
           window.location.reload();
