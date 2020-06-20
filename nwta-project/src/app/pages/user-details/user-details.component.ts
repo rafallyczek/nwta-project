@@ -52,12 +52,15 @@ export class UserDetailsComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
+          if(this.user.password!=atob(localStorage.getItem('token')).split(":")[1]){
+            localStorage.setItem('token',btoa(this.username+':'+this.user.password));
+          }
           this.refresh();
           window.location.reload();
+          this.user = new User();
         },
         error => console.log(error)
-        );
-      this.user = new User();          
+        );              
   }
 
   refresh(){

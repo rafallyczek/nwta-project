@@ -13,7 +13,7 @@
 p{
     text-align: left;
 }
-form{
+form{   
     width: 175px;
     margin-left: auto;
     margin-right: auto;
@@ -33,4 +33,11 @@ button{
     margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
+}
+.changeForm{
+    width: 300px;
+    border-top: 1px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
 }
