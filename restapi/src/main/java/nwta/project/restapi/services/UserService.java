@@ -44,6 +44,7 @@ public class UserService implements UserDetailsService {
         User newUser = userRepository.findById(user.getId()).get();
         newUser.setName(user.getName());
         newUser.setSurname(user.getSurname());
+        newUser.setPassword(user.getPassword());
         userRepository.save(newUser);
     }
 
