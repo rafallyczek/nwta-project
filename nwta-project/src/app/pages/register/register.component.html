@@ -13,6 +13,11 @@
         </div>
 
         <div class="inputs">
+            <label for="password2">Powtórz hasło</label>
+            <input id="password2" type="password" name="password2" [(ngModel)]="repeatedPass" required>
+        </div>
+
+        <div class="inputs">
             <label for="name">Imię</label>
             <input id="name" type="name" name="name" [(ngModel)]="user.name" required>
         </div>

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   user: User = new User();
+  repeatedPass: string;
 
   constructor(
     private userService: UserService,
@@ -24,15 +25,18 @@ export class RegisterComponent implements OnInit {
   }
 
   save() {
-    this.user.admin = false;
-    this.userService.addUser(this.user)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.router.navigate(["/home"]);
-        },
-      error => console.log(error));
-      this.user = new User();
+    if(this.user.password!=this.repeatedPass){
+      alert("Hasła muszą się zgadzać.");
+    }else{
+      this.user.admin = false;
+      this.userService.addUser(this.user)
+        .subscribe(
+          data => {
+            console.log(data);
+            this.router.navigate(["/home"]);
+          },
+        error => console.log(error));
+        this.user = new User();
+    }    
   }
-
 }
