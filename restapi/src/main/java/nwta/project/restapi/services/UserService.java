@@ -42,9 +42,15 @@ public class UserService implements UserDetailsService {
 
     public void updateUser(User user){
         User newUser = userRepository.findById(user.getId()).get();
-        newUser.setName(user.getName());
-        newUser.setSurname(user.getSurname());
-        newUser.setPassword(user.getPassword());
+        if(user.getName()!=null){
+            newUser.setName(user.getName());
+        }
+        if(user.getSurname()!=null){
+            newUser.setSurname(user.getSurname());
+        }
+        if(user.getPassword()!=null){
+            newUser.setPassword(user.getPassword());
+        }
         userRepository.save(newUser);
     }
 
