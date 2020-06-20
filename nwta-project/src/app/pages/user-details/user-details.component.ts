@@ -14,6 +14,8 @@ export class UserDetailsComponent implements OnInit {
   name: string;
   surname: string;
   user: User = new User();
+  confirmPass: string;
+  repeatedPass: string;
 
   constructor(
     private userService: UserService,
@@ -28,7 +30,21 @@ export class UserDetailsComponent implements OnInit {
   }
 
   onSubmit(){
-    this.update();
+    if(this.confirmPass!=atob(localStorage.getItem('token')).split(":")[1]){
+      alert("Nieprawidłowe hasło.");
+    }else{
+      this.update();
+    }    
+  }
+
+  onSubmitPass(){
+    if(this.confirmPass!=atob(localStorage.getItem('token')).split(":")[1]){
+      alert("Nieprawidłowe hasło.");
+    }else if(this.user.password!=this.repeatedPass){
+      alert("Hasła muszą się zgadzać.");
+    }else{
+      this.update();
+    }    
   }
 
   loadUserData(){
