@@ -1,9 +1,9 @@
 package nwta.project.restapi.controllers;
 
-import nwta.project.restapi.model.Book;
 import nwta.project.restapi.model.User;
 import nwta.project.restapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +18,13 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/addUser")
+    @ResponseStatus(HttpStatus.CREATED)
     public void addUser(@RequestBody User user) {
         userService.addUser(user);
     }
 
-    @GetMapping("/deleteUser/{id}")
+    @DeleteMapping("/deleteUser/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable int id) {
         userService.deleteUser(id);
     }
@@ -46,7 +48,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/updateUser")
+    @PatchMapping("/updateUser")
     public void updateUser(@RequestBody User user){
         userService.updateUser(user);
     }
