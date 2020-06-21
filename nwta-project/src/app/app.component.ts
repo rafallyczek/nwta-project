@@ -24,7 +24,8 @@ export class AppComponent implements OnInit {
     this.username = localStorage.getItem('username');
     this.name = localStorage.getItem('name');
     this.surname = localStorage.getItem('surname');
-    this.admin = localStorage.getItem('username')=='true' ? true : false;
+    this.admin = localStorage.getItem('admin')=='true' ? true : false;
+    console.log(this.admin);
     this.fullUserName = this.username + " (" + this.name + " " + this.surname + ")";
    }
 
@@ -47,7 +48,7 @@ export class AppComponent implements OnInit {
       this.username = localStorage.getItem('username');
       this.name = localStorage.getItem('name');
       this.surname = localStorage.getItem('surname');
-      this.admin = localStorage.getItem('username') ? true : false;
+      this.admin = localStorage.getItem('admin')=='true' ? true : false;
       this.fullUserName = this.username + " (" + this.name + " " + this.surname + ")";
     }
   }

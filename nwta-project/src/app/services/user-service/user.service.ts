@@ -13,7 +13,7 @@ export class UserService {
 
   deleteUser(id: number) : Observable<any> {
     const headers = new HttpHeaders().set('Authorization','Basic '+localStorage.getItem("token"));
-    return this.http.get(`${this.baseUrl}/deleteUser/${id}`, {headers: headers});
+    return this.http.delete(`${this.baseUrl}/deleteUser/${id}`, {headers: headers});
   }
 
   addUser(user: any) : Observable<any> {
@@ -27,7 +27,7 @@ export class UserService {
 
   updateUser(user: any) : Observable<any> {
     const headers = new HttpHeaders().set('Authorization','Basic '+localStorage.getItem("token"));
-    return this.http.post(`${this.baseUrl}/updateUser`, user, {headers: headers});
+    return this.http.patch(`${this.baseUrl}/updateUser`, user, {headers: headers});
   }
 
   getUser(username: string) : Observable<any>{

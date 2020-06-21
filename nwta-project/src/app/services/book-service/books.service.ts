@@ -38,7 +38,7 @@ export class BooksService {
   //Aktualizuj książkę
   updateBook(book: any) : Observable<any> {
     const headers = new HttpHeaders().set('Authorization','Basic '+localStorage.getItem("token"));
-    return this.http.post(`${this.url}/updateBook`, book, {headers: headers});
+    return this.http.patch(`${this.url}/updateBook`, book, {headers: headers});
   }
 
   //Ustaw editId

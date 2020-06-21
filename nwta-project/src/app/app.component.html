@@ -20,7 +20,7 @@
       <button mat-menu-item routerLink="/addBook">Dodaj książkę</button>
     </mat-menu>
 
-    <button mat-button [matMenuTriggerFor]="menu2" *ngIf="admin==true">Panel administratora</button>
+    <button mat-button [matMenuTriggerFor]="menu2" *ngIf="admin">Panel administratora</button>
     <mat-menu #menu2="matMenu" class="panel">
       <button mat-menu-item routerLink="/users">Użytkownicy</button>
     </mat-menu>
