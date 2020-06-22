@@ -237,6 +237,116 @@ class FormTests(unittest.TestCase):
             .until(ec.visibility_of_element_located((By.XPATH, "//button[@id='logout']")))
         logout.click()
 
+    def test_register_page_form(self):
+        driver = self.driver
+        driver.get('http://localhost:4200/register')
+        username_input = driver.find_element_by_name('username')
+        username_input.send_keys('registertest')
+        password_input = driver.find_element_by_name('password')
+        password_input.send_keys('registerpass')
+        password2_input = driver.find_element_by_name('password2')
+        password2_input.send_keys('registerpass')
+        name_input = driver.find_element_by_name('name')
+        name_input.send_keys('registername')
+        surname_input = driver.find_element_by_name('surname')
+        surname_input.send_keys('registersurname')
+        driver.find_element_by_id("submit").click()
+        time.sleep(2)
+        driver.get('http://localhost:4200/login')
+        login_input = driver.find_element_by_name('login')
+        login_input.send_keys('registertest')
+        password_input = driver.find_element_by_name('password')
+        password_input.send_keys('registerpass')
+        driver.find_element_by_id("submit").click()
+        time.sleep(2)
+        username = driver.find_element_by_class_name('username')
+        self.assertIn("registertest (registername registersurname)", username.text)
+        logout = WebDriverWait(driver, 10) \
+            .until(ec.visibility_of_element_located((By.XPATH, "//button[@id='logout']")))
+        logout.click()
+        time.sleep(2)
+        driver.get('http://localhost:4200/login')
+        login_input = driver.find_element_by_name('login')
+        login_input.send_keys('admin')
+        password_input = driver.find_element_by_name('password')
+        password_input.send_keys('admin')
+        driver.find_element_by_id("submit").click()
+        time.sleep(2)
+        driver.get('http://localhost:4200/users')
+        driver.maximize_window()
+        user = WebDriverWait(driver, 10) \
+            .until(ec.visibility_of_element_located((By.XPATH, "//div[contains(text(), 'registername')]")))
+        ActionChains(driver).move_to_element(user).perform()
+        button = WebDriverWait(driver, 10) \
+            .until(ec.visibility_of_element_located((By.XPATH, "//div[contains(text(), "
+                                                               "'registersurname')]/following-sibling::div"
+                                                               "/following-sibling::div/button")))
+        button.click()
+        logout = WebDriverWait(driver, 10) \
+            .until(ec.visibility_of_element_located((By.XPATH, "//button[@id='logout']")))
+        logout.click()
+
+    def test_userDetails_page_form(self):
+        driver = self.driver
+        driver.get('http://localhost:4200/register')
+        username_input = driver.find_element_by_name('username')
+        username_input.send_keys('registertest')
+        password_input = driver.find_element_by_name('password')
+        password_input.send_keys('registerpass')
+        password2_input = driver.find_element_by_name('password2')
+        password2_input.send_keys('registerpass')
+        name_input = driver.find_element_by_name('name')
+        name_input.send_keys('registername')
+        surname_input = driver.find_element_by_name('surname')
+        surname_input.send_keys('registersurname')
+        driver.find_element_by_id("submit").click()
+        time.sleep(2)
+        driver.get('http://localhost:4200/login')
+        login_input = driver.find_element_by_name('login')
+        login_input.send_keys('registertest')
+        password_input = driver.find_element_by_name('password')
+        password_input.send_keys('registerpass')
+        driver.find_element_by_id("submit").click()
+        time.sleep(2)
+        driver.get('http://localhost:4200/userDetails')
+        time.sleep(2)
+        name_input = driver.find_element_by_name('name')
+        name_input.send_keys('userDetailsName')
+        surname_input = driver.find_element_by_name('surname')
+        surname_input.send_keys('userDetailsSurname')
+        password_input = driver.find_element_by_name('password')
+        password_input.send_keys('registerpass')
+        driver.find_element_by_id("submit").click()
+        time.sleep(2)
+        username = WebDriverWait(driver, 10) \
+            .until(ec.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'userDetails')]/p"
+                                                               "/following-sibling::p")))
+        self.assertIn("userDetailsName", username.text)
+        logout = WebDriverWait(driver, 10) \
+            .until(ec.visibility_of_element_located((By.XPATH, "//button[@id='logout']")))
+        logout.click()
+        time.sleep(2)
+        driver.get('http://localhost:4200/login')
+        login_input = driver.find_element_by_name('login')
+        login_input.send_keys('admin')
+        password_input = driver.find_element_by_name('password')
+        password_input.send_keys('admin')
+        driver.find_element_by_id("submit").click()
+        time.sleep(2)
+        driver.get('http://localhost:4200/users')
+        driver.maximize_window()
+        user = WebDriverWait(driver, 10) \
+            .until(ec.visibility_of_element_located((By.XPATH, "//div[contains(text(), 'userDetailsName')]")))
+        ActionChains(driver).move_to_element(user).perform()
+        button = WebDriverWait(driver, 10) \
+            .until(ec.visibility_of_element_located((By.XPATH, "//div[contains(text(), "
+                                                               "'userDetailsSurname')]/following-sibling::div"
+                                                               "/following-sibling::div/button")))
+        button.click()
+        logout = WebDriverWait(driver, 10) \
+            .until(ec.visibility_of_element_located((By.XPATH, "//button[@id='logout']")))
+        logout.click()
+
     def tearDown(self):
         pass
 
