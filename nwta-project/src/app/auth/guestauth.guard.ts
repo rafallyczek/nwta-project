@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
+import { Router } from '@angular/router';
 import { GuestauthService } from '../services/guestauth-service/guestauth.service';
 
 @Injectable()
-export class GuestAuthGuard implements CanActivate {
+export class GuestAuthGuard  {
 
     base_url: string;
 
