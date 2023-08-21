@@ -114,5 +114,7 @@
       }
     }
   },
-  "defaultProject": "nwta-project"
+  "cli": {
+    "analytics": "7f1a1cf8-7d90-4053-ab05-e04eaa1706c4"
+  }
 }
