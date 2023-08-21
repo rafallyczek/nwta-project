@@ -1,5 +1,5 @@
-# NWTA Project
-* Folder **database** zawiera wyeksportowaną bazę MySQL używaną w projekcie (wyeksportowano za pomocą pakietu Xampp, phpMyAdmin)
-* Folder **e2e** zawiera testy e2e
-* Folder **nwta-project** zawiera aplikację Angulara
-* Folder **restapi** zawiera Spring REST API, z której korzysta aplikacja Angulara
+# NWTA-Project
+* **database** folder contains exported MySQL database used in project (exported with Xampp, phpMyAdmin)
+* **e2e** folder contains e2e tests
+* **nwta-project** folder contains Angular application
+* **restapi** folder contains Spring REST API, used by Angular application
